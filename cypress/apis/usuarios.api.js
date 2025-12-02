@@ -1,4 +1,4 @@
-// cypress/apis/usuarios.api.js
+import { usuariosBody } from "../support/utils/bodyBuilder";
 
 const baseUrl = "/usuarios";
 
@@ -8,13 +8,15 @@ class UsuariosAPI {
     return cy.apiGet(baseUrl);
   }
 
-  criar(body) {
+  criar(bodyOverride = {}) {
+    const body = usuariosBody.criarUsuario(bodyOverride);
     return cy.apiPost(baseUrl, body);
   }
 
-  atualizar(id, body) {
-    return cy.apiPut(`${baseUrl}/${id}`, body);
-  }
+  atualizar(id, bodyOverride = {}) {
+  const body = usuariosBody.atualizarUsuario(bodyOverride);
+  return cy.apiPut(`${baseUrl}/${id}`, body);
+}
 
   deletar(id) {
     return cy.apiDelete(`${baseUrl}/${id}`);

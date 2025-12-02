@@ -3,7 +3,7 @@ import produtos from "../apis/produtos.api.js";
 describe("Produtos API", () => {
 
   before(() => {
-    cy.apiLogin(); // gera token antes de tudo
+    cy.apiLogin(); 
   });
 
   it("Criar produto", () => {
